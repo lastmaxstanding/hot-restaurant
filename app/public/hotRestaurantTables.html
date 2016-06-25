@@ -3,6 +3,7 @@
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 <head>
+	<script   src="https://code.jquery.com/jquery-3.0.0.min.js"   integrity="sha256-JmvOoLtYsmqlsWxa7mDSLMwa6dZ9rrIdtrrVYRnDRH0="   crossorigin="anonymous"></script>
 <title>Hot Restaurant Tables Page </title>
 </head>
 
@@ -30,37 +31,64 @@
 	<div class="col-lg-12"> 
 	<!-- Current tables in use -->
 		<div class="panel panel-default"> 
-		<div class="panel-heading">
-						<h4 class="panel-title">Current Reservations</h4>
-					</div>
-		</div>
-		<div class="panel-body" id="tableSection">
-					<div class="well" id="tableWell-01"><h2><span class="label label-primary">1</span> | 1</h2></div><div class="well" id="tableWell-11"><h2><span class="label label-primary">2</span> | 2</h2></div><div class="well" id="tableWell-21"><h2><span class="label label-primary">3</span> | 3</h2></div><div class="well" id="tableWell-31"><h2><span class="label label-primary">4</span> | 4</h2></div><div class="well" id="tableWell-41"><h2><span class="label label-primary">5</span> | 5</h2></div></div>
+			<div class="panel-heading">
+					<h4 class="panel-title">Current Reservations</h4>
+			</div>
+			<div class="panel-body" id="tableSection">
+						
+			</div>
 		</div>
 	<!-- Waiting List Panel -->
 		<div class="panel panel-default">
-					<div class="panel-heading">
-						<h4 class="panel-title">Waiting List</h4>
-					</div>
-					<div class="panel-body" id="waitlistSection">
-					<div class="well" id="waitlistWell-01"><h2><span class="label label-primary">1</span> | 6</h2></div><div class="well" id="waitlistWell-11"><h2><span class="label label-primary">2</span> | 7</h2></div><div class="well" id="waitlistWell-21"><h2><span class="label label-primary">3</span> | </h2></div><div class="well" id="waitlistWell-31"><h2><span class="label label-primary">4</span> | </h2></div><div class="well" id="waitlistWell-41"><h2><span class="label label-primary">5</span> | </h2></div><div class="well" id="waitlistWell-51"><h2><span class="label label-primary">6</span> | blah123</h2></div></div>
-				</div>
+			<div class="panel-heading">
+				<h4 class="panel-title">Waiting List</h4>
+			</div>
+			<div class="panel-body" id="waitlistSection">
+				
+			</div>
 		</div>
-
 	</div>
 
 </div>
 
-<footer class="footer">
-	<div class= "container">
-	<p>
-	<!-- Need to link the Api tables in the file -->
-	<a href="">API Table Link</a>
-	 | 
-	<a href=""> API Wait List</a>
-	</p>
-	</div>
- </footer>
+<script type="text/javascript">
+		
+		var currentURL = window.location.origin;
+
+		console.log(currentURL + "/api");
+
+		$.get(currentURL + "/api", function(data){
+
+			for (var i =0; i < data.length; i++){
+				var wellSection = $("<div>");
+				wellSection.addClass('well');
+				wellSection.attr('id', 'tableWell-' + i)
+				$('#tableSection').append(wellSection);				
+
+				$("#tableWell-" + i).append("<h2>" + data[i].name + "</h2>");
+				$("#tableWell-" + i).append("<h3>Role: " + data[i].email + "</h4>");
+				$("#tableWell-" + i).append("<h3>Age: " + data[i].phoneNumber + "</h4>");
+				$("#tableWell-" + i).append("<h3>Force Points: " + data[i].uniquieID + "</h4>");	
+			}
+		})
+
+
+		$.get(currentURL + "/api/wait", function(data){
+
+			for (var i =0; i < data.length; i++){
+				var wellSection = $("<div>");
+				wellSection.addClass('well');
+				wellSection.attr('id', 'waitWell-' + i)
+				$('#waitlistSection').append(wellSection);				
+
+				$("#waitWell-" + i).append("<h2>" + data[i].name + "</h2>");
+				$("#waitWell-" + i).append("<h3>Role: " + data[i].email + "</h4>");
+				$("#waitWell-" + i).append("<h3>Age: " + data[i].phoneNumber + "</h4>");
+				$("#waitWell-" + i).append("<h3>Force Points: " + data[i].uniquieID + "</h4>");	
+			}
+		})
+
+	</script>
 
 <!-- hyperlinks at the bottom to the left linking to other pages -->
 

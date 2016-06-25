@@ -59,7 +59,7 @@ app.get('/', function(req, res){
 
 app.get('/tables', function(req, res){
 	//res.send("Welcome to the Star Wars Page!")
-	res.sendFile(path.join(__dirname + '/app/public/hotRestaurantTable.html'));
+	res.sendFile(path.join(__dirname + '/app/public/hotRestaurantTables.html'));
 })
 
 app.get('/reservation', function(req, res){
