@@ -87,7 +87,7 @@ app.post('/api/new', function(req, res){
 	newTable.routeName = newTable.name.replace(/\s+/g, '').toLowerCase()
 
 	console.log(newTable);
-    if(tableList.length <= 5)
+    if(tableList.length < 5)
     {
 	    tableList.push(newTable);
     }
