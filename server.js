@@ -17,8 +17,35 @@ app.use(bodyParser.json({type:'application/vnd.api+json'}));
 
 
 //import data from waitlist and table list
-var waitList = [];
-var tableList = [];
+var waitList = [
+{
+    name: 'jonathan stewart',
+    phoneNumber:'9545555555',
+    email: 'supman@sdsa.com',
+    uniquieID:'fsdfsdfsd'
+},
+{
+    name: 'jonathan stewart',
+    phoneNumber:'9545555555',
+    email: 'supman@sdsa.com',
+    uniquieID:'fsdfsdfsd'
+},
+{
+    name: 'jonathan stewart',
+    phoneNumber:'9545555555',
+    email: 'supman@sdsa.com',
+    uniquieID:'fsdfsdfsd'
+}
+
+];
+var tableList = [
+    {
+    name: 'jonathan stewart',
+    phoneNumber:'9545555555',
+    email: 'supman@sdsa.com',
+    uniquieID:'fsdfsdfsd'
+}
+];
 
 
 // Routes
